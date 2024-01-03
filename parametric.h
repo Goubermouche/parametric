@@ -592,7 +592,7 @@ namespace parametric {
 		 */
 		template<typename type = bool>
 		auto add_flag(const std::string& long_name, const std::string& description, const std::string& short_name, const type& default_value) -> flag& {
-			flag& flag = add_flag(long_name, description, short_name);
+			flag& flag = add_flag<type>(long_name, description, short_name);
 
 			// assign the expected value
 			flag.m_default_value = default_value;
