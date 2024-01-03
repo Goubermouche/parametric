@@ -40,15 +40,15 @@ Since our command group is useless as of now, let's add some commands to it:
 #include <parametric.h>
 
 int list_rats(const parametric::parameters& params) {
-	/* logic for listing all available rats */
-	return 0;
+    /* logic for listing all available rats */
+    return 0;
 }
 
 int sell_rat(const parametric::parameters& params) {
-	auto name = params.get<std::string>("name"); // parsed rat name
-	auto price = params.get<double>("price"); // parsed rat price
-	/* logic for selling a rat */
-	return 0;
+    auto name = params.get<std::string>("name"); // parsed rat name
+    auto price = params.get<double>("price"); // parsed rat price
+    /* logic for selling a rat */
+    return 0;
 }
 
 int main(int argc, char** argv) {
@@ -57,13 +57,13 @@ int main(int argc, char** argv) {
     // rat trading
     parametric::command_group& trading = program.add_command_group("trading", "Rat trading");
 
-	// listing existing rats
-	trading.add_command("list", "List all available rats", list_rats);
+    // listing existing rats
+    trading.add_command("list", "List all available rats", list_rats);
 
-	// selling rats
-	parametric::command& sell = trading.add_command("sell", "Sell a rat", sell_rat);
-	sell.add_positional_argument<std::string>("name", "Name of the rat to sell");
-	sell.add_positional_argument<double>("price", "Price at which to sell the rat");
+    // selling rats
+    parametric::command& sell = trading.add_command("sell", "Sell a rat", sell_rat);
+    sell.add_positional_argument<std::string>("name", "Name of the rat to sell");
+    sell.add_positional_argument<double>("price", "Price at which to sell the rat");
 
     // parse and execute the program
     return program.parse(argc, argv);
@@ -80,43 +80,43 @@ $ rats.exe trading sell Ryan 12400
 In this case, the command had two positional arguments: "name" and "price" - both of these arguments, and their parsed value, can be referenced using the `parameters` class. Let's move onto the "view" command: 
 ```cpp
 enum class rat_location {
-	FOREST, // view your rat in a forest 
-	BEACH,  // view your rat on a beach
-	LHC     // view your rat in the Large Hadron Collider
+    FOREST, // view your rat in a forest 
+    BEACH,  // view your rat on a beach
+    LHC     // view your rat in the Large Hadron Collider
 };
 
 int view_rat(const parametric::parameters& params) {
-	auto name = params.get<std::string>("name"); // parsed rat name
+    auto name = params.get<std::string>("name"); // parsed rat name
 
-	if(params.contains("location")) {
-		// the user would like to see their rat in a specific location
-		auto location = params.get<rat_location>("location"); // parsed rat location
-	}
+    if(params.contains("location")) {
+        // the user would like to see their rat in a specific location
+        auto location = params.get<rat_location>("location"); // parsed rat location
+    }
 
-	auto is_smirking = params.get("smirk");
+    auto is_smirking = params.get("smirk");
     auto label = params.get<std::string>("label");
 
-	/* logic for viewing a rat */
-	return 0;
+    /* logic for viewing a rat */
+    return 0;
 }
 
 template<>
 struct parametric::options_parser<rat_location> {
-	static auto parse(const std::string& value) -> rat_location {
-		if(value == "forest") {
-			return rat_location::FOREST;
-		}
+    static auto parse(const std::string& value) -> rat_location {
+        if(value == "forest") {
+            return rat_location::FOREST;
+        }
 
-		if (value == "forest") {
-			return rat_location::FOREST;
-		}
+        if (value == "forest") {
+            return rat_location::FOREST;
+        }
 
-		if (value == "lhc") {
-			return rat_location::LHC;
-		}
+        if (value == "lhc") {
+            return rat_location::LHC;
+        }
 
-		throw std::invalid_argument("invalid rat location");
-	}
+        throw std::invalid_argument("invalid rat location");
+    }
 };
 ...
 
