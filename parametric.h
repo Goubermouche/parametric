@@ -1,4 +1,4 @@
-// Parametric: a basic and simple program options parser.
+// Parametric: a basic program options parser.
 // Made by: @Goubermouche (https://github.com/Goubermouche)
 
 // Copyright(c) 2024 Goubermouche
