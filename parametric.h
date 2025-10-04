@@ -46,21 +46,21 @@ namespace parametric {
 	};
 
 	template<>
-	struct parametric::options_parser<float> {
+	struct options_parser<float> {
 		static auto parse(const std::string& value) -> float {
 			return std::stof(value);
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<double> {
+	struct options_parser<double> {
 		static auto parse(const std::string& value) -> double {
 			return std::stof(value);
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<bool> {
+	struct options_parser<bool> {
 		static auto parse(const std::string& value) -> bool {
 			if(value == "true") {
 				return true;
@@ -75,56 +75,56 @@ namespace parametric {
 	};
 
 	template<>
-	struct parametric::options_parser<uint8_t> {
+	struct options_parser<uint8_t> {
 		static auto parse(const std::string& value) -> uint8_t {
 			return static_cast<uint8_t>(std::stoi(value));
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<uint16_t> {
+	struct options_parser<uint16_t> {
 		static auto parse(const std::string& value) -> uint16_t {
 			return static_cast<uint16_t>(std::stoi(value));
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<uint32_t> {
+	struct options_parser<uint32_t> {
 		static auto parse(const std::string& value) -> uint32_t {
 			return std::stoul(value);
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<uint64_t> {
+	struct options_parser<uint64_t> {
 		static auto parse(const std::string& value) -> uint64_t {
 			return std::stoull(value);
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<int8_t> {
+	struct options_parser<int8_t> {
 		static auto parse(const std::string& value) -> int8_t {
 			return static_cast<int8_t>(std::stoi(value));
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<int16_t> {
+	struct options_parser<int16_t> {
 		static auto parse(const std::string& value) -> int16_t {
 			return static_cast<int16_t>(std::stoi(value));
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<int32_t> {
+	struct options_parser<int32_t> {
 		static auto parse(const std::string& value) -> int32_t {
 			return std::stoi(value);
 		}
 	};
 
 	template<>
-	struct parametric::options_parser<int64_t> {
+	struct options_parser<int64_t> {
 		static auto parse(const std::string& value) -> int64_t {
 			return std::stoll(value);
 		}
